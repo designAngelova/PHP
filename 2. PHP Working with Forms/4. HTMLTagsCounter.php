@@ -1,4 +1,8 @@
-
+<!--Write a PHP script HTMLTagsCounter.php which generates an HTML form like in the example below.
+It should contain a label, an input text field and a submit button. The user enters HTML tag in the input field.
+If the tag is valid, the script should print “Valid HTML tag!”, and if it is invalid – “Invalid HTML Tag!”.
+On the second line, there should be a score counter. For every valid tag entered, the score should increase by 1.
+Hint: You may use sessions. Use an array to store all valid HTML5 tags.-->
 <!DOCTYPE html>
 
 <html>
