@@ -10,7 +10,7 @@ require_once('header.php');
     <form method="post">
         <label for="cars">Enter cars</label>
         <input type="text" name="cars" id="cars"/>
-        <input type="submit" name="sumbit" value="Show result">
+        <input type="submit" name="submit" value="Show result">
     </form>
 <?php
 if(isset($_POST['cars'])){
