@@ -1,3 +1,6 @@
+<!--Write a PHP script PrimesInRange.php that receives two numbers – start and end – from an
+input field and displays all numbers in that range as a comma-separated list. Prime numbers
+should be bolded. Styling the page is optional-->
 <?php
 require_once('header.php');
 ?>

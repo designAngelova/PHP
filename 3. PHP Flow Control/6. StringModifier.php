@@ -1,3 +1,9 @@
+<!--Write a PHP script StringModifier.php which receives a string from an input form and modifies it according to the selected
+option (radio button). You should support the following operations: palindrome check, reverse string, split to extract leters
+only, hash the string with the default PHP hashing algorithm, shuffle the string characters randomly. The result should be
+displayed right under the input field. Styling the page is optional. Think about which of the modification can be achieved
+with already built-in functions in PHP. Where necessary, write your own algorithms to modify the given string. Hint:
+Use the crypt() function for the "Hash String" modification.-->
 <?php
 require_once('header.php');
 ?>

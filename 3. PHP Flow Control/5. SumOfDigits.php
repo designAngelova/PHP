@@ -1,3 +1,6 @@
+<!--Write a PHP script SumOfDigits.php which receives a comma-separated list of integers from an input form and creates a two-column
+table. The first column should contain each of the values from the input. The second column should contain the sum of the digits
+of each value. If the value is not an integer number, print "I cannot sum that". Styling the page is optional-->
 <?php
 require_once('header.php');
 ?>
