@@ -23,3 +23,5 @@ if(isset($_POST['text']) && isset($_POST['word'])){
     }
 }
 ?>
+</body>
+</html>
