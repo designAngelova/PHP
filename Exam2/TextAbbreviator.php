@@ -1,28 +1,27 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
-$list  =  htmlentities($_GET['list']);
+$list  =  ($_GET['list']);
 $max = $_GET['maxSize'];
-$output = "<ul>";
-$lines = preg_split('/(?<=[.?!])\s+(?=[a-z])/i', $list);
+echo "<ul>";
+$lines = explode("\n", $list);
 foreach ( $lines as $value) {
-    $value = ltrim ($value);
+    $value = trim ($value);
 
     $strLength = strlen($value);
+    if($strLength > 0){
+        if($strLength < $max){
+            echo "<li>".htmlspecialchars($value)."</li>";
+        }
 
+        else{
 
+            $rest = substr($value, 0, $max);
+            $rest = htmlspecialchars($rest);
+            echo "<li>$rest...</li>";
+        }
 
-    if($strLength < $max){
-        $output.="<li>$value</li>";
     }
-
-    else{
-        $decoded =htmlspecialchars_decode($value);
-        $rest = substr($decoded, 0, $max);
-        $rest = htmlspecialchars($rest);
-        $output.="<li>".$rest."..."."</li>";
-    }
-
 }
-$output.="</ul>";
-echo $output;
+
+echo "</ul>";
+
 ?>
