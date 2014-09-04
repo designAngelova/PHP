@@ -1,31 +1,29 @@
 <?php
-$input = ($_GET['html']);
+$str = $_GET['html'];
+$semanticTags = ['main', 'header', 'nav', 'article', 'section', 'aside', 'footer'];
 
-$inputArr =explode("\n", $input);
-$semantics = [ "main", "header", "nav", "article", "section", "aside", "footer" ];
+$openTagsPattern = '/<div.*?\b((id|class)\s*=\s*"(.*?)").*?>/';
+preg_match_all($openTagsPattern, $str, $openingTags);
 
-$id= "div id=";
-$class= " class = \"";
-$input = preg_replace('/"/', '', $input);
-foreach($inputArr as $value) {
-
-    if (strpos($value, $id) !== false) {
-
-       $out= str_replace($id, "", $input);
-
-
-
+foreach ($openingTags[0] as $key => $match) {
+    $attrName = $openingTags[1][$key];
+    $attrValue = $openingTags[3][$key];
+    if (in_array($attrValue, $semanticTags)) {
+        $replaceTag = str_replace('div', $attrValue, $match);
+        $replaceTag = str_replace($attrName, '', $replaceTag);
+        $replaceTag = preg_replace('/\s*>/', '>', $replaceTag);
+        $replaceTag = preg_replace('/\s{2,}/', ' ', $replaceTag);
+        $str = str_replace($match, $replaceTag, $str);
     }
-
-
-    foreach ($semantics as $value) {
-
-        if (strpos($inputArr[0], $value) !== false) {
-            $div =$value;
-        }
-
-
-    }
-
-
 }
+
+$closeTagsPattern = '/<\/div>\s.*?(\w+)\s*-->/';
+preg_match_all($closeTagsPattern, $str, $closingTags);
+//var_dump($closingTags);
+foreach ($closingTags[0] as $key => $match) {
+    $commentValue = $closingTags[1][$key];
+    if (in_array($commentValue, $semanticTags)) {
+        $str = str_replace($match, "</$commentValue>", $str);
+    }
+}
+echo $str;
